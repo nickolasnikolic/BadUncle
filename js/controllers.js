@@ -1,22 +1,5 @@
 angular.module('relatives.controllers', ['ionic'])
 
-.controller('RelativesCtrl', function($scope, Relatives, Spouses, Children) {
-    $scope.relatives = Relatives.all();
-    $scope.spouses = Spouses.all();
-})
-
-.controller('RelativeCtrl', function($scope, $stateParams, Relatives, Spouses, Children) {
-    $scope.relative = Relatives.get( $stateParams.relativeId );
-    $scope.spouse = Spouses.get( $scope.relative.spouse );
-    $scope.children = [];
-    //get all children
-    var kids = Children.all();
-    //link the kid with the parent by id
-    for( kid in $scope.relative.children ){
-        $scope.children.push( kids[ kid ] );
-    } 
-})
-
 .controller('ChildrenCtrl', function($scope, Children ) {
   $scope.children = Children.all();
 })
@@ -25,47 +8,6 @@ angular.module('relatives.controllers', ['ionic'])
   $scope.child = Children.get( $stateParams.childId );
 })
 
-.controller( 'AddRowRelativeCtrl', function( $scope, $ionicModal ){
-    //display a form modal with the attributes from the model
-    //once filled validate
-    
-    //then insert a row and populate it with the form data
-    $ionicModal.fromTemplateUrl('templates/add-row-relative.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-    $scope.openModal = function() {
-        $scope.modal.show();
-    };
-    //drop the modal
-    $scope.closeModal = function() {
-        $scope.modal.hide();
-    };
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hidden', function() {
-        // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-        // Execute action
-    });    
-} )
-
-.controller( 'AddRelativeCtrl', function( $scope, Relatives ){
-    $scope.addRelative = function(){
-        Relatives.add( {
-            name: $scope.relativeName,
-            relationship: $scope.relativeRelationship
-        } );
-    };
-} )
-
 .controller( 'AddRowChildCtrl', function( $scope, $ionicModal ){
     //display a form modal with the attributes from the model
     //once filled validate
@@ -73,7 +15,7 @@ angular.module('relatives.controllers', ['ionic'])
     //then insert a row and populate it with the form data
     $ionicModal.fromTemplateUrl('templates/add-row-child.html', {
         scope: $scope,
-        animation: 'slide-in-up'
+        animation: 'fade-in'
     }).then(function(modal) {
         $scope.modal = modal;
     });
@@ -102,9 +44,22 @@ angular.module('relatives.controllers', ['ionic'])
     $scope.addChild = function(){
         Children.add( {
             name: $scope.childName,
-            dob: $scope.childDob, 
-            interests: [ { name: $scope.interestName, date: $scope.interestDate, level: $scope.interstLevel } ]
+            dob: $scope.childDob 
+            //interests: [ { name: $scope.interestName, date: $scope.interestDate, level: $scope.interestLevel } ]
             
         } );
+        $scope.closeModal();
     };
 } )
+
+.controller( 'RemoveChildCtrl', function( $scope, Children ){
+    $scope.removeChild = function( id ){
+        Children.remove( id );
+    };
+} )
+
+.controller( 'BirthdayCtrl', function( $scope, Children ){
+    var birthdays = Children.sortByBirthday();
+    $scope.nextBirthday = moment( moment( birthdays[ 0 ].dob ).format( "MMDD" ), "MMDD" ).add( 'year', 1 ).fromNow();
+    $scope.nextBirthdayKid = birthdays[ 0 ].name;
+} );

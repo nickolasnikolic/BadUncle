@@ -3,17 +3,19 @@
       <h1 class="title">Add a Munchkin:</h1>
     </ion-header-bar>
     <ion-content>
-        <form name="relativeForm" ng-controller="AddChildCtrl">
-            <p>Name:<input type="text" ng-model="childName" /></p>
-            <p>Date of Birth:<input type="date" ng-model="childDob" novalidate /></p>
-            <p>Parent: <input type="text" ng-model="parent" /></p>
-            <ion-card>
-                <p>Interest:</p>
-                <p><input type="text" ng-model="interestName" /></p>
-                <p><input type="text" ng-model="interestDate" /></p>
-                <p><input type="text" ng-model="interestLevel" /></p>
-            </ion-card>
-            <button name="done" ng-click="addChild()">Add</button>
-        </form>
+        <div class="card padding">
+            <form name="relativeForm" ng-controller="AddChildCtrl" class="list">
+                <div class="item item-input">Name:<input type="text" ng-model="childName" /></div>
+                <div class="item item-input">Date of Birth:<input type="date" ng-model="childDob" novalidate /></div>
+                <div class="item item-input">Parent: <input type="text" ng-model="parent" /></div>
+                <!--<ion-card class='card'>
+                    <div class="item padding-left"><strong>Interest:</strong></div>
+                    <div class="item item-input">Name:<input type="text" ng-model="interestName" /></div>
+                    <div class="item item-input">Date:<input type="text" ng-model="interestDate" /></div>
+                    <div class="item item-input">Interest Level:<input type="text" ng-model="interestLevel" /></div>
+                </ion-card>-->
+                <button name="done" ng-click="addChild()" class="button button-block button-calm">Add</button>
+            </form>
+        </div>
     </ion-content>
   </ion-modal-view>

@@ -1,67 +1,20 @@
 angular.module('relatives.services', [])
-
-.factory('Relatives', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var relatives = [
-    { id: 0, name: 'Scruff McGruff', spouse: 0, children: [0], relationship: 'brother' },
-    { id: 1, name: 'G.I. Jane', spouse: 1, children: [1,4], relationship: 'aunt' },
-    { id: 2, name: 'Miss Frizzle', spouse: 2, children: [2,5,6], relationship: 'sister' },
-    { id: 3, name: 'Ash Ketchum', spouse: 3, children: [3,7,8,9], relationship: 'cousin' },
-  ];
-
-  return {
-    all: function() {
-      return relatives;
-    },
-    get: function( relativeId ) {
-      // Simple index lookup
-      return relatives[ relativeId ];
-    },
-    getSpouseId: function( relativeId ){ return relatives[ relativeId ].spouse; },
-    getChildren: function( relativeId ){ return relatives[ relativeId ].children; },
-    add: function( data ){ relatives.push( data ); }
-  }
-} )
-  .factory('Spouses', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var spouses = [
-    { id: 0, name: 'Buff McGruff', spouse: 0 },
-    { id: 1, name: 'G.I. Georgio', spouse: 1  },
-    { id: 2, name: 'Mr Frizzle', spouse: 2  },
-    { id: 3, name: 'Ashlie Ketchum', spouse: 3  }
-  ];
-
-  return {
-    all: function() {
-      return spouses;
-    },
-    get: function( spouseId ) {
-      // Simple index lookup
-      return spouses[ spouseId ];
-    },
-    add: function( data ){ spouses.push( data ); }
-  }
-} )
   .factory( 'Children', function(){
   
     // Might use a resource here that returns a JSON array
 
       // Some fake testing data
       var children = [
-        { id: 0, name: 'Scruff McGruff Jr', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 1, name: 'G.I. Junior', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 2, name: 'Miss Gurgle', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 3, name: 'Scruff McGruff', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 4, name: 'McCAssidy Jane', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 5, name: 'Billy Jean', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 6, name: 'Milly Philly', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 7, name: 'Oragano Pie', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 8, name: 'Olivia Nikolic', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
-        { id: 9, name: 'Ashley Ketchup', dob: '07/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] }
+        { id: 0, name: 'Scruff McGruff Jr', dob: '07/14/2004', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 1, name: 'G.I. Junior', dob: '12/25/2002', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 2, name: 'Miss Gurgle', dob: '07/07/2007', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 3, name: 'Scruff McGruff', dob: '11/09/2009', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 4, name: 'McCAssidy Jane', dob: '07/10/2010', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 5, name: 'Billy Jean', dob: '07/12/2012', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 6, name: 'Milly Philly', dob: '07/13/1999', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 7, name: 'Oragano Pie', dob: '09/13/1981', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 8, name: 'Olivia Nikolic', dob: '12/13/2000', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] },
+        { id: 9, name: 'Ashley Ketchup', dob: '03/13/1978', interests: [ { name: 'Star Wars', date: '07/13/2010', level: 'high' }, { name: 'dinosaurs', date: '07/13/2000', level: 'high' } ] }
       ];
 
       return {
@@ -72,7 +25,16 @@ angular.module('relatives.services', [])
           // Simple index lookup
           return children[ childId ];
         },
-        add: function( data ){ children.push( data ); }
+        add: function( data ){ children.push( data ); },
+        remove: function( index ){ children.splice( index, 1 ); },
+        sortByBirthday: function(){
+            return _.sortBy( children, function( element ){ return element.dob } );
+        },
+        nextBirthday: function(){
+            //reorder array of objects by date
+            var sortedByBirthday = this.sortByBirthday();
+            return sortedByBirthday[ 0 ].dob;
+        }
       }
   
 } );

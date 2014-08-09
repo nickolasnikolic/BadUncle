@@ -1,1 +1,20 @@
-/* Empty. Add your own CSS if you like */
+
+.photo{
+    height: 3em;
+    width: 3em;
+    background-color: gray;
+    float: left;
+    margin-right: 0.5em;
+}
+/* Empty. Add your own CSS if you like 
+.paddingHelp{
+    padding: 1em;
+    margin: 0 auto;
+}
+.topTouch{
+    padding-top: 1em;
+}*/
+
+.warning{
+    color: red;
+}

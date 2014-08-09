@@ -1,19 +1,21 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'firend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<ion-view title="{{child.name}}">
+<ion-view title="detail">
     <ion-content has-header="true" padding="true">
-        <ion-card>
-            <p>Child's name: {{child.name}}</p>
-            <p>Child's age: {{child.age}}</p>
-            <p>Child's DOB: {{child.dob}}</p>
-            <ul ng-show="child.interests.length">
-                Child's Interests:
-                <li ng-repeat="interest in child.interests"><p>{{interest.name}}</p><p>{{interest.date}}</p><p>{{interest.level}}</p></li>
-            </ul>
-        </ion-card>
+        <div class="card">
+            <div class="card list">
+                <div class="item">Rugrat's name: {{child.name}}</div>
+                <div class="item">Rugrat's DOB: {{child.dob}}</div>
+                <div class="item">Rugrat's age: <get-age dob="child.dob" ></get-age></div>
+            </div>
+            <div>
+                <ul class="card list" ng-show="child.interests.length">
+                    <p>Child's Interests:</p>
+                    <li class="item" ng-repeat="interest in child.interests">
+                        <div>interest: {{interest.name}}</div>
+                        <div>date found out: {{interest.date}}</div>
+                        <div>interest level: {{interest.level}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

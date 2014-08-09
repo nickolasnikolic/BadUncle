@@ -1,0 +1,30 @@
+<ion-view title="Munchkins">
+    <ion-content class="has-header has-footer">
+        <div class='card padding'>
+            <div>
+                <h3 class="item-wrap">You have <strong>{{children.length}}</strong> birthdays and christmas presents to remember.</h3>
+                <p class="warning" ng-controller="BirthdayCtrl">The next birthday coming up<br /> is <strong>{{ nextBirthdayKid }}'s {{ nextBirthday }}</strong>.</p>
+            </div>
+        </div>
+        <ion-list class="list-inset">
+            
+            <ion-item>
+                <button class="button button-block button-positive" href="#" ng-controller="AddRowChildCtrl" ng-click="openModal()">Add a Child</button>
+            </ion-item> 
+            
+            <ion-item ng-repeat="child in children" type="item-text-wrap" href="#/children/{{child.id}}">
+                <div class="item padding">
+                    <div class="photo"></div>
+                    <div><h2><strong>{{child.name}}</strong></h2></div>
+                    <div><strong>born: </strong>{{child.dob}}</div>
+                    <div><strong><get-age dob="child.dob"></get-age> old</strong></div>
+                    <div ng-controller="RemoveChildCtrl" >
+                        <button class="button button-block button-assertive" ng-click="alert( 'dude, work already' );">remove</button>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        
+
+    </ion-content>
+</ion-view>

@@ -28,49 +28,20 @@ angular.module('baduncle', ['ionic', 'relatives.controllers', 'relatives.service
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
-
-    // Each tab has its own nav history stack:
-
-    .state('tab.relatives', {
-      url: '/relatives',
-      views: {
-        'tab-relatives': {
-          templateUrl: 'templates/tab-relatives.html',
-          controller: 'RelativesCtrl'
-        }
-      }
-    })
-    
-    .state('tab.relative', {
-      url: '/relatives/:relativeId',
-      views: {
-        'tab-relatives': {
-          templateUrl: 'templates/relative-detail.html',
-          controller: 'RelativeCtrl'
-        }
-      }
-    })
   
-    .state('tab.children', {
+    .state('children', {
       url: '/children',
       views: {
-        'tab-children': {
-          templateUrl: 'templates/tab-children.html',
+        'children': {
+          templateUrl: 'templates/children.html',
           controller: 'ChildrenCtrl'
         }
       }
     })
-    .state('tab.child', {
+    .state('child', {
       url: '/children/:childId',
       views: {
-        'tab-children': {
+        'children': {
           templateUrl: 'templates/child-detail.html',
           controller: 'ChildCtrl'
         }
@@ -78,7 +49,7 @@ angular.module('baduncle', ['ionic', 'relatives.controllers', 'relatives.service
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/relatives');
+  $urlRouterProvider.otherwise('/children');
 
 });
 
