@@ -1,0 +1,14 @@
+<ion-view title="Children">
+    <ion-content class="has-header">
+        <h1>...and their Annoyances</h1>
+        <ion-list>
+            <ion-item ng-repeat="child in children" type="item-text-wrap" href="#/tab/children/{{child.id}}">
+                {{child.name}}
+            </ion-item>
+            <ion-item>
+                <button class="ion-button" href="#">Add a Child</button>
+            </ion-item> 
+        </ion-list>
+
+    </ion-content>
+</ion-view>
