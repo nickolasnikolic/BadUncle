@@ -1,4 +1,4 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+This is an addon starter template with some customizations for the [Ionic Framework](http://ionicframework.com/).
 
 ## How to use this template
 
