@@ -20,7 +20,8 @@ angular.module('relatives.services', [])
       return relatives[ relativeId ];
     },
     getSpouseId: function( relativeId ){ return relatives[ relativeId ].spouse; },
-    getChildren: function( relativeId ){ return relatives[ relativeId ].children; }
+    getChildren: function( relativeId ){ return relatives[ relativeId ].children; },
+    add: function( data ){ relatives.push( data ); }
   }
 } )
   .factory('Spouses', function() {
@@ -41,7 +42,8 @@ angular.module('relatives.services', [])
     get: function( spouseId ) {
       // Simple index lookup
       return spouses[ spouseId ];
-    }
+    },
+    add: function( data ){ spouses.push( data ); }
   }
 } )
   .factory( 'Children', function(){
@@ -69,7 +71,8 @@ angular.module('relatives.services', [])
         get: function( childId ) {
           // Simple index lookup
           return children[ childId ];
-        }
+        },
+        add: function( data ){ children.push( data ); }
       }
   
 } );
