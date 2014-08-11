@@ -11,4 +11,18 @@ angular.module('relatives.directives', [])
         },
         template: '<span>{{ howOld }}</span>'
     };
+} )
+
+.directive( 'getBirthday', function(){
+    return {
+        restrict: 'E',
+        scope:{
+            dob: '='
+        },
+        controller: function( $scope ){
+            var stringBirthdate = String( $scope.dob );
+            $scope.birthday = stringBirthdate.slice( 0, 5 );
+        },
+        template: '<span>{{ birthday }}</span>'
+    };
 } );

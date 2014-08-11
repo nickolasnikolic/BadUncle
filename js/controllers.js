@@ -1,7 +1,9 @@
 angular.module('relatives.controllers', ['ionic'])
 
 .controller('ChildrenCtrl', function($scope, Children ) {
-  $scope.children = Children.all();
+    $scope.children = Children.all();
+    $scope.removeFlag = false;
+    $scope.orderPredicate = '-dob';
 })
 
 .controller('ChildCtrl', function($scope, $stateParams, Children ) {
@@ -44,8 +46,8 @@ angular.module('relatives.controllers', ['ionic'])
     $scope.addChild = function(){
         Children.add( {
             name: $scope.childName,
-            dob: $scope.childDob 
-            //interests: [ { name: $scope.interestName, date: $scope.interestDate, level: $scope.interestLevel } ]
+            dob: moment( $scope.childDob ).format( "MM/DD/YYYY" ),
+            interests: []
             
         } );
         $scope.closeModal();
@@ -53,13 +55,14 @@ angular.module('relatives.controllers', ['ionic'])
 } )
 
 .controller( 'RemoveChildCtrl', function( $scope, Children ){
-    $scope.removeChild = function( id ){
-        Children.remove( id );
+    $scope.removeChild = function( index ){
+        Children.remove( index );
     };
 } )
 
 .controller( 'BirthdayCtrl', function( $scope, Children ){
-    var birthdays = Children.sortByBirthday();
-    $scope.nextBirthday = moment( moment( birthdays[ 0 ].dob ).format( "MMDD" ), "MMDD" ).add( 'year', 1 ).fromNow();
+    var birthdays = Children.all();
+    _.sortBy( birthdays, function( element ){ return element.dob } )
+    $scope.nextBirthday = moment( moment( birthdays[ 0 ].dob ).format( "MMDD" ), "MMDD" ).add( 1, 'year' ).fromNow();
     $scope.nextBirthdayKid = birthdays[ 0 ].name;
 } );

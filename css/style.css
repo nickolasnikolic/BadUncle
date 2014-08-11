@@ -14,7 +14,10 @@
 .topTouch{
     padding-top: 1em;
 }*/
+.black{ color: black; }
+.warning{ color: red; }
+.rounded{ border-radius: 7px; }
+.smallest{ font-size: 0.4em; }
 
-.warning{
-    color: red;
-}
+.even{ background-color: #ccc; }
+.odd{ background-color: #eee; }
