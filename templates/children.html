@@ -1,46 +1,30 @@
-<ion-view title="Munchkins" ng-controller="ChildrenCtrl">
-    <ion-content class="has-header has-footer">
-        <div class='padding'>
+<ion-view title="Munchkins">
+    <ion-content class="has-header has-footer" ng-controller="ChildrenCtrl">
+        <div class='padding' ng-show="show">
             <div>
                 <h3 class="item-wrap">You have <strong>{{children.length}}</strong> birthdays and christmas presents to remember.</h3>
-                <p class="black" ng-controller="BirthdayCtrl">The next birthday coming up<br /> is <strong>{{ nextBirthdayKid }}'s {{ nextBirthday }}.</strong></p>
+                <div><p class="black" ng-controller="BirthdayCtrl">The next birthday coming up<br /> is <strong>{{ nextBirthdayKid }}'s {{ nextBirthday }}.</strong></p></div>
              </div>
         </div>
         <ion-list class="list">
             
             <ion-item>
                 <a class="button button-block button-positive rounded" ng-href="#" ng-controller="AddRowChildCtrl" ng-click="openModal()">Add a Child</a>
-            </ion-item> 
-            <!--<ion-item ng-show="children.length">
-                <div>
-                    <label class="item item-radio"  ng-click="orderPredicate = 'name'">
-                        <input type="radio" name="group">
-                            <div class="item-content">
-                                Order by Name.
-                            </div>
-                    </label>
-                    <label class="item item-radio"  ng-click="orderPredicate = 'dob'">
-                        <input type="radio" name="group">
-                            <div class="item-content">
-                                Order by Birthdays.
-                            </div>
-                    </label>
-                </div>
-            </ion-item>-->
-            <ion-item class="item" ng-class-even="'even'" ng-class-odd="'odd'"  ng-repeat="child in children | orderBy:orderPredicate:true" type="item-text-wrap" ng-href="#/children/{{$index}}">
+            </ion-item>
+            
+            <ion-item class="item" ng-repeat="child in children track by $index" type="item-text-wrap" ng-href="#/children/{{$index}}">
                 <div class="item padding">
                     <!--<div class="photo"></div>-->
-                    <div><h2><strong>{{child.name}}</strong></h2></div>
-                    <!--<div><strong>born: </strong>{{child.dob}}</div>-->
+                    <div><h2><strong>{{child.firstName}} {{child.lastName}}</strong></h2></div>
                     <div><strong>birthday: <get-birthday dob="child.dob"></get-birthday></strong></div>
                     <div><strong><get-age dob="child.dob"></get-age> old</strong></div>
-                    <div class="item-button-right">
-                        <a ng-controller="RemoveChildCtrl" name="harry-mess" class="rounded button button-block button-assertive" ng-href="#" ng-click="removeChild( $index )">x</a>
+                    <div ng-show="$last">
+                        <a ng-controller="RemoveChildCtrl" name="harry-mess" class="rounded button button-block button-assertive" ng-href="#" ng-click="removeChild( {{$index}} )">remove</a>
                     </div>
                 </div>
             </ion-item>
+            
         </ion-list>
         
-
     </ion-content>
 </ion-view>

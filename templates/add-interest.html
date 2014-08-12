@@ -1,0 +1,18 @@
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title calm">Add an Interest:</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list card padding">
+            <form name="interestForm" ng-controller="AddInterestCtrl">
+                <div>
+                    <div class="item padding-left"><strong>Interest:</strong></div>
+                    <div class="item item-input"><input placeholder="interest name" type="text" ng-model="interestName" /></div>
+                    <div class="item item-input"><input placeholder="interest level" type="text" ng-model="interestLevel" /></div>
+                </div>
+                <a name="done" ng-click="addInterest()" class="button button-block button-calm item">Add</a>
+                <a name="cancel" ng-click="closeModal()" class="button button-block button-calm item">Cancel</a>
+            </form>
+        </div>
+    </ion-content>
+  </ion-modal-view>

@@ -1,21 +1,27 @@
-<ion-view title="detail">
-    <ion-content has-header="true" padding="true">
+<ion-view title="detail" ng-controller="ChildCtrl">
+    <ion-content has-header="true" has-footer="true" padding="true">
         <div>
             <div class="card list">
-                <div class="item">Rugrat's name: {{child.name}}</div>
-                <div class="item">Rugrat's DOB: {{child.dob}}</div>
+                <div class="item">Rugrat's name: {{ child.firstName }} {{ child.lastName }}</div>
+                <div class="item">Rugrat's DOB: {{ child.dob }}</div>
                 <div class="item">Rugrat's age: <get-age dob="child.dob" ></get-age></div>
             </div>
-            <!--<div>
-                <ul class="card list" ng-show="child.interests.length">
+            <div class="inset-list">
+                <ion-item>
+                    <a class="button button-block button-positive rounded" ng-controller="AddInterestRowCtrl" ng-click="openModal();">Add an Interest</a>
+                </ion-item> 
+                <div ng-show="child.interests.length">
                     <p>Child's Interests:</p>
-                    <li class="item" ng-repeat="interest in child.interests">
-                        <div>interest: {{interest.name}}</div>
-                        <div>date found out: {{interest.date}}</div>
-                        <div>interest level: {{interest.level}}</div>
-                    </li>
-                </ul>
-            </div>-->
+                    <div ng-repeat="interest in child.interests | orderBy:child.interest.date">
+                        <div class="item item-devider item-dark">interest: {{interest.name}}</div>
+                        <div class="item">date found out: {{interest.date}}</div>
+                        <div class="item">interest level: {{interest.level}}</div>
+                        <div ng-show="$last" ng-controller="RemoveInterestCtrl" class="item">
+                            <a class="button button-block button-dark rounded" ng-click="removeInterest( {{$index}} )">remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>
